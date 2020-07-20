@@ -10,7 +10,8 @@ namespace SMGPrototype
         static void Main(string[] args)
         {
             const int START_OF_HREF = 9; // This is the index where the url in href starts
-            String search_string = "Despacito";
+            Console.Write("Enter search word: ");
+            String search_string = Console.ReadLine() ;
             // Example to download a webpage
             WebClient x = new WebClient();
             String y = x.DownloadString("https://www.allmusic.com/search/all/" + search_string);
@@ -26,6 +27,11 @@ namespace SMGPrototype
                 }
             }
 
+
+            foreach (string link in links)
+            {
+                string web_data = x.DownloadString(link);
+            }
             // The next step from here would be to use those links to retrieve album information, like Artist name, album name, track number, album art, etc. 
             // Now since we will be getting multiple links, we need to be able to eliminate links if they don't contain certain information. For example if the name of the song
             // is not an exact match of the given name in the search field then the link should be eliminated. Similarly if there are any inconsistancies with the information
